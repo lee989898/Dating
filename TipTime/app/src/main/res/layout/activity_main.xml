@@ -9,80 +9,76 @@
 
     <EditText
         android:id="@+id/cost_of_service"
-        android:layout_height="wrap_content"
         android:layout_width="160dp"
-        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
         android:hint="Cost of Service"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parents"/>
+        app:layout_constraintTop_toTopOf="parents" />
 
     <TextView
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How was the service?"
-        app:layout_constraintTop_toBottomOf="@id/cost_of_service"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
     <RadioGroup
+        android:id="@+id/tip_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tip_option"
+        android:checkedButton="@id/option_twenty_percent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_question"
-        android:checkedButton="@id/option_twenty_percent">
+        app:layout_constraintTop_toBottomOf="@id/service_question">
 
         <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/option_twenty_percent"
-            android:text="Amazing (20%)"/>
-
-        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Amazing (20%)" />
+
+        <RadioButton
             android:id="@+id/option_eighteen_percent"
-            android:text="Good (18%)"/>
-
-        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Good (18%)" />
+
+        <RadioButton
             android:id="@+id/option_fifteen_percent"
-            android:text="OK (15%)"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK (15%)" />
 
 
-
-
-        </RadioGroup>
+    </RadioGroup>
 
     <Switch
+        android:id="@+id/round_up_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/round_up_switch"
-        android:text="Round up tip?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tip_option"
         android:checked="true"
-        />
+        android:text="Round up tip?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tip_option" />
 
     <Button
+        android:id="@+id/calculate_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calculate"
-        android:id="@+id/calculate_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/round_up_switch"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
 
     <TextView
+        android:id="@+id/tip_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tip_result"
+        android:text="Tip Amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculate_button"
-        android:text="Tip Amount"/>
+        app:layout_constraintTop_toBottomOf="@id/calculate_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
