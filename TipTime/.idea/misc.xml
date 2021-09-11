@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lee/Desktop/Tip-Time/TipTime/app/src/main/res/drawable-anydpi-v26/ic_launcher_background.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/Lee/Desktop/Tip-Time/TipTime/app/src/main/res/drawable-anydpi-v26/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/Lee/Desktop/Tip-Time/TipTime/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Lee/Desktop/Tip-Time/TipTime/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/Lee/Desktop/TipTime/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
       </map>
     </option>
