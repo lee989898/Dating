@@ -7,14 +7,25 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon_cost_of_service"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/ic_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cost_of_service"
+        app:layout_constraintBottom_toBottomOf="@id/cost_of_service"
+        />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/cost_of_service"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:hint="@string/cost_of_service"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -26,7 +37,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon_service_question"
+        app:srcCompat="@drawable/ic_service"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/service_question"
+        app:layout_constraintBottom_toBottomOf="@id/service_question"
+       android:importantForAccessibility="no"/>
 
 
     <TextView
@@ -34,7 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How was the service?"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@id/cost_of_service"
         app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
     <RadioGroup
@@ -43,7 +63,7 @@
         android:layout_height="wrap_content"
         android:checkedButton="@id/option_twenty_percent"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/service_question"
         app:layout_constraintTop_toBottomOf="@id/service_question">
 
         <RadioButton
@@ -67,14 +87,27 @@
 
     </RadioGroup>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon_round_up"
+        app:srcCompat="@drawable/ic_round_up"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/round_up_switch"
+        app:layout_constraintBottom_toBottomOf="@id/round_up_switch"
+        />
+
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/round_up_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="Round up tip?"
+        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_round_up"
         app:layout_constraintTop_toBottomOf="@id/tip_option" />
 
     <Button
@@ -82,6 +115,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calculate"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
@@ -91,6 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Tip Amount: $10"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculate_button" />
 
