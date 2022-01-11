@@ -1,8 +1,13 @@
 package com.lee989898.datingapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.lee989898.datingapp.auth.IntroActivity
 import com.lee989898.datingapp.slider.CardStackAdapter
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
@@ -18,6 +23,15 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val setting = findViewById<ImageView>(R.id.settingIcon)
+        setting.setOnClickListener {
+            val auth = Firebase.auth
+            auth.signOut()
+
+            val intent = Intent(this, IntroActivity::class.java)
+            startActivity(intent)
+        }
 
         val cardStackView = findViewById<CardStackView>(R.id.cardStackView)
 
