@@ -13,6 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,4 +51,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    implementation 'com.android.support:multidex:1.0.3'
 }
