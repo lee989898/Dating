@@ -30,6 +30,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailArea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="email" />
@@ -44,7 +45,9 @@
             app:counterMaxLength="10"
             android:layout_height="wrap_content">
 
+
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pwdArea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="pwd"
@@ -128,6 +131,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/joinBtn"
             android:text="회원가입"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
