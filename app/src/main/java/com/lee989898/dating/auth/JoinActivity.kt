@@ -32,6 +32,8 @@ class JoinActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
+                        val user = auth.currentUser
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
 
