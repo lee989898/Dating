@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener {
-            
+
             val auth = Firebase.auth
             auth.signOut()
 
