@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "553240315888",
+    "project_id": "dating-dcede",
+    "storage_bucket": "dating-dcede.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553240315888:android:85c6804fd3edab90037f35",
+        "android_client_info": {
+          "package_name": "com.lee989898.dating"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553240315888-i08rav5eig1j2mc2egiem5tl6i3jpa4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAkuf5ZTVbU6R0x3hoYgQA8ymvZziW6Ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553240315888-i08rav5eig1j2mc2egiem5tl6i3jpa4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
