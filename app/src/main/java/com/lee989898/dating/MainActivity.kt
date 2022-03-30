@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     private val usersDataList = mutableListOf<UserDataModel>()
 
+    private var userCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,6 +50,20 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCardSwiped(direction: Direction?) {
+
+                if(direction == Direction.Right){
+
+                }
+
+                if(direction == Direction.Left){
+
+                }
+
+                userCount += 1
+
+                if(userCount == usersDataList.count()){
+                    getUserDataList()
+                }
             }
 
             override fun onCardRewound() {
