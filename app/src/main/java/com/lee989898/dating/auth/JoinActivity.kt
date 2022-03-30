@@ -1,9 +1,13 @@
 package com.lee989898.dating.auth
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -28,6 +32,21 @@ class JoinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_join)
 
         auth = Firebase.auth
+
+        val profileImage = findViewById<ImageView>(R.id.imageArea)
+        val getAction = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback { uri ->
+                profileImage.setImageURI(uri)
+
+            }
+
+        )
+
+        profileImage.setOnClickListener {
+            getAction.launch("image/*")
+
+        }
 
         val joinBtn = findViewById<Button>(R.id.joinBtn)
         joinBtn.setOnClickListener {

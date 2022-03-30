@@ -6,9 +6,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.lee989898.dating.auth.IntroActivity
+import com.lee989898.dating.auth.UserDataModel
 import com.lee989898.dating.slider.CardStackAdapter
+import com.lee989898.dating.utils.FirebaseRef
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -18,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var cardStackAdapter: CardStackAdapter
     lateinit var manager: CardStackLayoutManager
+
+    private val usersDataList = mutableListOf<UserDataModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,16 +62,34 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-        val testList = mutableListOf<String>()
-        testList.add("a")
-        testList.add("b")
-        testList.add("c")
-
-        cardStackAdapter = CardStackAdapter(baseContext, testList)
+        
+        cardStackAdapter = CardStackAdapter(baseContext, usersDataList)
         cardStackView.layoutManager = manager
         cardStackView.adapter = cardStackAdapter
 
+        getUserDataList()
+
 
     }
+
+    private fun getUserDataList(){
+        val postListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for(dataModel in snapshot.children){
+                    val user = dataModel.getValue(UserDataModel::class.java)
+                    usersDataList.add(user!!)
+
+                }
+
+                cardStackAdapter.notifyDataSetChanged()
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        }
+        FirebaseRef.userInfoRef.addValueEventListener(postListener)
+    }
+
 }
