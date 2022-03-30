@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dating">
         <activity
+            android:name=".message.MyLikeListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".message.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".setting.SettingActivity"
             android:exported="false" />
         <activity

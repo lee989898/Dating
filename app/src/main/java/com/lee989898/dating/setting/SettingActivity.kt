@@ -8,6 +8,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lee989898.dating.R
 import com.lee989898.dating.auth.IntroActivity
+import com.lee989898.dating.message.MyLikeListActivity
 
 class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,14 @@ class SettingActivity : AppCompatActivity() {
             auth.signOut()
 
             val intent = Intent(this, IntroActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        val myLikeBtn = findViewById<Button>(R.id.myLikeList)
+        myLikeBtn.setOnClickListener {
+
+            val intent = Intent(this, MyLikeListActivity::class.java)
             startActivity(intent)
 
         }
