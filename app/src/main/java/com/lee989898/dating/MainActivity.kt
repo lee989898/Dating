@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.lee989898.dating.auth.IntroActivity
 import com.lee989898.dating.auth.UserDataModel
+import com.lee989898.dating.setting.SettingActivity
 import com.lee989898.dating.slider.CardStackAdapter
 import com.lee989898.dating.utils.FirebaseRef
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
@@ -33,10 +34,10 @@ class MainActivity : AppCompatActivity() {
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener {
 
-            val auth = Firebase.auth
-            auth.signOut()
-
-            val intent = Intent(this, IntroActivity::class.java)
+//            val auth = Firebase.auth
+//            auth.signOut()
+//
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-        
+
         cardStackAdapter = CardStackAdapter(baseContext, usersDataList)
         cardStackView.layoutManager = manager
         cardStackView.adapter = cardStackAdapter
@@ -91,5 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
     }
+
+
 
 }
