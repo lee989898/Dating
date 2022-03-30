@@ -1,10 +1,16 @@
 package com.lee989898.dating
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -61,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
                 if (direction == Direction.Right) {
 
+                    userLikeOtherUser(uid, usersDataList[userCount].uid.toString())
                 }
 
                 if (direction == Direction.Left) {
@@ -147,5 +154,60 @@ class MainActivity : AppCompatActivity() {
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
     }
 
+    private fun userLikeOtherUser(myUid: String, otherUid: String) {
+
+        FirebaseRef.userLikeRef.child(myUid).child(otherUid).setValue("true")
+
+        getOtherUserLikeList(otherUid)
+    }
+
+    private fun getOtherUserLikeList(otherUid: String) {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (dataModel in snapshot.children) {
+
+                    val likeUserKey = dataModel.key.toString()
+                    if (likeUserKey == uid) {
+                        createNotificationChannel()
+                        sendNotification()
+                    }
+
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        }
+        FirebaseRef.userInfoRef.child(otherUid).addValueEventListener(postListener)
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "name"
+            val descriptionText = "description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("Test_Chanell", name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+    }
+
+    private fun sendNotification(){
+        val builder = NotificationCompat.Builder(this, "Test channel")
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle("매칭완료")
+            .setContentText("매칭이 완료되었습니다 저사람도 나를 좋아해요")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        with(NotificationManagerCompat.from(this)){
+            notify(123, builder.build())
+        }
+    }
 
 }
